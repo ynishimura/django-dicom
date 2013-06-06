@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charaset="utf-8">
+    <title>uploader</title>
+  </head>
+  <body>
+    <h1>File Uploader</h1>
+	{{msg}}
+	<form enctype="multipart/form-data" action='/uploader/' method='POST'>
+	<table>
+	{{form}}
+	</table>
+	<input type='submit' value=" UPLOAD ">
+	</form>
+
+	<h2>NEW FILES</h2>
+
+	{% if latest %}
+	<ul>
+	{% for upload in latest %}
+	<li>{{ upload.file_name }}：{{upload.upload_date}}</li>
+	{% endfor %}
+	</ul>
+	{% else %}
+	<p>No polls are available.</p>
+	{% endif %}
+	<form >
+
+	<h2>SEARCH</h2>
+	<form name="" method="post" action=#>
+	検索条件を指定してください<br>
+	<table width="400" border="1" cellspacing="1" cellpadding="0">
+	<tr>
+	<td>File Name</td>
+	<td>
+	<input type="text" name="name" size="40" maxlength="255">
+	</td>
+	</tr>
+	<tr>
+	<td>拡張子</td>
+	<td>
+	<input type="radio" name="extension" value="image/jpg">
+	jpg　 <br>
+	<input type="radio" name="extension" value="image/png">
+	png<br>
+	<input type="radio" name="extension" value="image/gif">
+	gif<br>
+	<input type="radio" name="extension" value="application/dicom">
+	dcm<br>
+	</tr>
+	</table>
+	<input type="submit" name="submit" value="SEARCH">
+	<input type="reset" value="条件クリア">
+	</form>
+
+  </body>
+</html>
