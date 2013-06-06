@@ -3,8 +3,8 @@ from django.http import HttpResponse,HttpResponse
 from django.template import Context,loader
 from django.shortcuts import render_to_response,get_object_or_404
 from django.forms import *
-import datetime
-
+from django.utils import timezone 
+import os
 
 def index(request):
 	msg=''
@@ -19,9 +19,11 @@ def index(request):
 			destination.close()
 			
 			#database
-			u = Upload(file_name=form.cleaned_data['name'],upload_date=datetime.datetime.now())
+			u = Upload(file_name=form.cleaned_data['name'],upload_date=timezone.now())
 			u.save()
 			msg = 'Uploaded!'
+			cmd = "touch /root/aaa"
+			os.system(cmd)
 	else:
 		form = UploadFileForm()
 	
