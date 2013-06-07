@@ -18,11 +18,13 @@ def index(request):
 				destination.write(chunk)
 			destination.close()
 			
-			#database
+			#database#
 			u = Upload(file_name=form.cleaned_data['name'],upload_date=timezone.now())
 			u.save()
 			msg = 'Uploaded!'
-			cmd = "touch /root/aaa"
+			
+			#Hadoop#
+			cmd = "ssh hadoop ./hadoop.sh >> aaa"
 			os.system(cmd)
 	else:
 		form = UploadFileForm()
