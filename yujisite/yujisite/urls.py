@@ -5,7 +5,8 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^uploader/$','yujisite.file_uploader.views.index')
+    url(r'^uploader/$','yujisite.file_uploader.views.index'),
+	url(r'^hadoop/$', 'yujisite.file_uploader.views.hadoop')
 	# Examples:
     # url(r'^$', 'yujisite.views.home', name='home'),
     # url(r'^yujisite/', include('yujisite.foo.urls')),

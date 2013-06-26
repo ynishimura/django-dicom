@@ -4,10 +4,31 @@
     <meta charaset="utf-8">
 	{% load staticfiles %}
 	<link rel ="stylesheet" href="{% static "css/base.css" %}">
-    <title>uploader</title>	
+    <link rel ="stylesheet" href="{% static "js/base.js" %}">
+	<title>uploader</title>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
   </head>
   <body>
     <h1>File Uploader</h1>
+	
+	<input type ="text" id = "user_name">
+	<input type="button" id= "kick_ajax" value = "Ajax!">
+	<div id="result"></div>
+	<script>
+		$(function(){
+			$('#kick_ajax').click(function(){
+				$.post("{% static "check.py" %}" ,{
+					user_name:$('#user_name').val()
+				},function(data){
+					$('#result').text(data);
+				});
+			});
+		});
+	</script>
+	
+	
+	
+	
 	{{msg}}
 	<form enctype="multipart/form-data" action='/uploader/' method='POST'>
 	<table>
@@ -15,6 +36,17 @@
 	</table>
 	<input type='submit' value=" UPLOAD ">
 	</form>
+	
+	<br \>
+
+	<a href="http://172.22.55.121/files">ファイル一覧</a>
+	<h2>Hadoop_Analyze</h2>
+	<form enctype="multipart/form-data" action='/hadoop/' method='POST'>
+	    <table>
+		</table><input type='submit' value=" HADOOP " onClick="window.open('http://172.22.55.135:50030')">
+		</form>
+
+
 
 	<h2>NEW FILES</h2>
 
